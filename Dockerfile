@@ -7,7 +7,13 @@ RUN unzip rclone-current-linux-amd64.zip && mv rclone-*-linux-amd64/rclone /bin/
 FROM restic/restic:0.9.6
 
 # install mailx
-RUN apk add --update --no-cache heirloom-mailx fuse
+RUN apk add --update --no-cache \
+      heirloom-mailx fuse \
+      curl \
+      postgresql-client \
+      docker-cli
+
+RUN curl -o /bin/calcardbackup https://codeberg.org/BernieO/calcardbackup/raw/branch/master/calcardbackup && chmod +x /bin/calcardbackup
 
 COPY --from=rclone /bin/rclone /bin/rclone
 
