@@ -9,6 +9,7 @@ FROM restic/restic:0.9.6
 # install mailx
 RUN apk add --update --no-cache \
       heirloom-mailx fuse \
+      bash \
       curl \
       postgresql-client \
       docker-cli
