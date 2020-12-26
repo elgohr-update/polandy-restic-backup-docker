@@ -13,7 +13,10 @@ logLast() {
 
 if [ -f "/hooks/pre-backup.sh" ]; then
     echo "Starting pre-backup script ..."
-    /hooks/pre-backup.sh
+    if ! /hooks/pre-backup.sh; then
+      echo "pre-backup script failed. Exit 1"
+      exit 1
+    fi
 else
     echo "Pre-backup script not found ..."
 fi
