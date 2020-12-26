@@ -12,7 +12,8 @@ RUN apk add --update --no-cache \
       bash \
       curl \
       postgresql-client \
-      docker-cli
+      docker-cli \
+      awake
 
 RUN curl -o /bin/calcardbackup https://codeberg.org/BernieO/calcardbackup/raw/branch/master/calcardbackup && chmod +x /bin/calcardbackup
 
